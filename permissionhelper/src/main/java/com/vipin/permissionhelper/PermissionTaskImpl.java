@@ -40,7 +40,11 @@ public class PermissionTaskImpl<TResult> extends PermissionTask<TResult> {
         return this;
     }
 
-    public OnSuccessListener<? super TResult> getListener() {
+    public OnSuccessListener<? super TResult> getSuccessListener() {
         return onSuccessListener;
+    }
+
+    public OnFailureListener getFailureListener() {
+        return onFailureListener;
     }
 }

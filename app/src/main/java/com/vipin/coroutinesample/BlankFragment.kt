@@ -1,12 +1,15 @@
 package com.vipin.coroutinesample
 
+import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.vipin.permissionhelper.BaseFragment
+import com.vipin.permissionhelper.asDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -61,6 +64,15 @@ class BlankFragment : BaseFragment() {
             print("$s")
         }
 
+        lifecycleScope.launch {
+            var sss = requestPermission(arrayOf(Manifest.permission.READ_CONTACTS,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE)).asDeferred().await()
+            Log.e("BlankFragment","requestPermission $sss")
+
+            sss.forEach {
+                Log.e("BlankFragment","requestPermission forEach $it")
+
+            }
+        }
 
     }
 

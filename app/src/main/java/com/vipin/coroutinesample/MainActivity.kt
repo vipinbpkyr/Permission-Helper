@@ -19,11 +19,14 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         job = Job()
 
-        button.setOnClickListener {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame, BlankFragment()).commit()
+
+       /* button.setOnClickListener {
             Log.e("MainActivity","onClick")
 
             startActivity(Intent(this, HomeActivity::class.java))
-        }
+        }*/
 
        /* async { // <- extension on current scope
             test("async 1")
