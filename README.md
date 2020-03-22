@@ -1,6 +1,8 @@
 # Permission-Helper
 Android Fragment Permission Helper Library Using Kotlin Coroutines
 
+Step 1. Add the JitPack repository to your build file
+
 Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
@@ -12,11 +14,19 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.vipinbpkyr:Permission-Helper:0.1.2'
+	        implementation 'com.github.vipinbpkyr:Permission-Helper:1.0.0'
 	}
 
 Usage
+ 
+```Java
 
-1. Extend com.vipin.permissionhelper.BaseFragment
+var permissionsResult = requestPermissionAsync(arrayOf(Manifest.permission.READ_CONTACTS,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)).asDeferred().await()
 
-2. ![Screenshot 2020-03-19 at 1 03 47 PM](https://user-images.githubusercontent.com/26180091/77042673-1db2bd80-69e2-11ea-92f7-f9fabb9d5178.png)
+// permissionsResult will contain Permissions Result after User grants the permissions
+
+            permissionsResult.forEach {
+                Log.e("Fragment","result $it")
+            }
