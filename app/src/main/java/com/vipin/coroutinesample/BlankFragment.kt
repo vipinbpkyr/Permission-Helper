@@ -69,7 +69,8 @@ class BlankFragment : Fragment() {
 //                Manifest.permission.WRITE_EXTERNAL_STORAGE)).asDeferred().await()
 
             // Without using BaseFragment
-            var permissions = requestPermissionAsync(arrayOf(Manifest.permission.READ_CONTACTS,Manifest.permission.ACCESS_FINE_LOCATION,
+            var permissions = requestPermissionAsync(arrayOf(Manifest.permission.READ_CONTACTS,
+                Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)).asDeferred().await()
 
             text.text = permissions.toString()
@@ -77,6 +78,10 @@ class BlankFragment : Fragment() {
             permissions.forEach {
                 Log.e("Fragment","requestPermission forEach result $it")
             }
+
+
+
+
         }
         }
     }

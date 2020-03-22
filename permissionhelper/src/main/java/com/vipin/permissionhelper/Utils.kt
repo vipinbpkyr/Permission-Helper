@@ -21,7 +21,7 @@ fun <T> PermissionTask<T>.asDeferred(): Deferred<T> {
 
 fun Fragment.requestPermissionAsync(arrayOf: Array<String>): PermissionTask<MutableList<Pair<String, Int>>>{
 
-    val taskImpl: PermissionTaskImpl<MutableList<Pair<String, Int>>>
+    val taskImpl: PermissionTask<MutableList<Pair<String, Int>>>
     var counterState: HeadlessFragment? = fragmentManager
         ?.findFragmentByTag("headless_fragment") as HeadlessFragment?
 
@@ -29,6 +29,7 @@ fun Fragment.requestPermissionAsync(arrayOf: Array<String>): PermissionTask<Muta
         counterState = HeadlessFragment()
         counterState.let {
             fragmentManager?.beginTransaction()
+                ?.addToBackStack(null)
                 ?.add(it, "headless_fragment")?.commit()
         }
     }

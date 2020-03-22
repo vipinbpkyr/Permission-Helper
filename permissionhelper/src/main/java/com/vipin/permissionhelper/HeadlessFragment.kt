@@ -51,6 +51,8 @@ class HeadlessFragment : Fragment() {
 
             }
         }
+
+        fragmentManager?.popBackStack()
     }
 
     fun requestPermissionInternal(arrayOf: Array<String>): PermissionTaskImpl<MutableList<Pair<String, Int>>> {
