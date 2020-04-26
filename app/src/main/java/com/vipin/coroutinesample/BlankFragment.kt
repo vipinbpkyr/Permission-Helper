@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.vipin.permissionhelper.asDeferred
 import com.vipin.permissionhelper.requestPermissionAsync
+import com.vipin.permissionhelper.showRationale
 import kotlinx.android.synthetic.main.fragment_blank.*
 import kotlinx.coroutines.launch
 
@@ -78,10 +79,6 @@ class BlankFragment : Fragment() {
             permissions.forEach {
                 Log.e("Fragment","requestPermission forEach result $it")
             }
-
-
-
-
         }
         }
     }

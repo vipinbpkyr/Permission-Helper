@@ -1,5 +1,9 @@
 package com.vipin.permissionhelper
 
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.Deferred
 
@@ -36,4 +40,19 @@ fun Fragment.requestPermissionAsync(arrayOf: Array<String>): PermissionTask<Muta
     taskImpl = counterState.requestPermissionInternal(arrayOf)
 
     return taskImpl
+}
+
+fun Fragment.showRationale(permission: String)  =
+     ActivityCompat.shouldShowRequestPermissionRationale(
+        requireActivity(),
+         permission
+    )
+
+fun Fragment.goToDetailsSettings() {
+    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:${requireActivity().packageName}")).apply {
+        addCategory(Intent.CATEGORY_DEFAULT)
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    }.also { intent ->
+        startActivity(intent)
+    }
 }
