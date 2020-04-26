@@ -14,8 +14,12 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.vipinbpkyr:Permission-Helper:1.0.1'
+	        implementation 'com.github.vipinbpkyr:Permission-Helper:1.0.2'
 	}
+	
+	
+
+New : showRationale and goToDetailsSettings extension functions added.
 
 Usage
  
